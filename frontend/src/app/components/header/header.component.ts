@@ -15,8 +15,8 @@ export class HeaderComponent implements OnInit {
 
 	username : string;
 	loggedIn:boolean = false;
-	listItems:any = [ {name: "Home", link: "#/home"}, {name: "Products", link: "#/products"}, {name: "About", link: "#/about"},
-	{name: "Login", link: "#/register-user"}, {name: "Cart", link: "#/cart"} ];
+	listItems:any = [ {name: "Home", link: "home"}, {name: "Products", link: "products"}, {name: "About", link: "about"},
+	{name: "Login", link: "register-user"}, {name: "Cart", link: "cart"} ];
 
   constructor(private myService: MyserviceService
 	,private userService:UserService

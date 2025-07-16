@@ -45,18 +45,6 @@ import { FooterComponent } from './components/footer/footer.component';
     SpinnerComponent,
     FooterComponent,
   ],
-  exports:[
-    AppComponent,
-    RegisterUserComponent,
-    AboutComponent,
-    HomeComponent,
-    ProductsComponent,
-    CartComponent,
-    HeaderComponent,
-    SliderComponent,
-    SpinnerComponent,
-    FooterComponent
-  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

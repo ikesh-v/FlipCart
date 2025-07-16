@@ -56,23 +56,23 @@ export class AppComponent implements OnInit, OnDestroy {
 		this.listItems = [
 			{
 				name: "Home",
-				link: "#/home"
+				link: "home"
 			},
 			{
 				name: "Products",
-				link: "#/products"
+				link: "products"
       },
 			{
 				name: "About",
-				link: "#/about"
+				link: "about"
       },
       {
 				name: "Login",
-				link: "#/register-user"
+				link: "register-user"
       },
       {
 				name: "Cart",
-				link: "#/cart"
+				link: "cart"
 			},
 		];
   }
