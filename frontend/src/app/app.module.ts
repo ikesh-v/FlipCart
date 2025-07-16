@@ -11,7 +11,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
-import { HttpModule } from '@angular/http';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -59,7 +58,6 @@ import { FooterComponent } from './components/footer/footer.component';
     MatButtonModule,
     MatCheckboxModule,
     MatIconModule,
-    HttpModule,
     routes,
     FlexLayoutModule,
     MatToolbarModule,

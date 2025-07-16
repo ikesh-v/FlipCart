@@ -1,9 +1,36 @@
 //importing modules
 const express = require("express");
-const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
+const { MongoClient, ServerApiVersion } = require('mongodb');
+
+const mongoUserName = env.MONGO_USER_NAME || "ikesh";
+const mongoPassword = env.MONGO_PASSWORD || "vXBr2sUOt7Ulr52s"
+const mongoClusterName = env.MONGO_CLUSTER || "cluster0.cxqbuqz.mongodb.net";
+
+const uri = `mongodb+srv://${mongoUserName}:${mongoPassword}@${mongoClusterName}/?retryWrites=true&w=majority&appName=Cluster0`;
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
+async function run() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
 
 let app = express();
 
@@ -14,20 +41,6 @@ const products_route = require("./routes/products.route");
 const orders_route = require("./routes/orders.route");
 const reviews_route = require("./routes/reviews.route");
 const passwords_route = require("./routes/unused-routes/passwords.route");
-
-
-//connect to mongo
-mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://ikesh:ikesh@cluster0-kqrxx.gcp.mongodb.net/FlipCart?retryWrites=true&w=majority", { useNewUrlParser: true,  useUnifiedTopology: true  });
-
-mongoose.connection.on("connected", () => {
-    console.log("Connected to mongodb atlas at port 27017");
-});
-
-mongoose.connection.on("error", (err) => {
-    if(err) {
-        console.log("error connecting to mongodb:"+err);
-    }
-});
 
 
 //adding middleware-cors
