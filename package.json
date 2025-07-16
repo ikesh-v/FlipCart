@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node backend/server.js",
     "main": "node backend/server.js",
+    "build": "npm run install-backend && npm run install-frontend && npm run build-frontend",
     "install-backend": "cd backend && npm install",
     "build-frontend": "cd frontend && npm run build --prod",
     "install-frontend": "cd frontend && npm install",
