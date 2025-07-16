@@ -1,7 +1,6 @@
 import { UserService } from './../../services/user/user.service';
 import { MyserviceService } from '../../services/myservice.service';
 import { Component, OnDestroy, OnInit, Input } from "@angular/core";
-import { MediaObserver, MediaChange } from "@angular/flex-layout";
 import { Subscription } from 'rxjs';
 
 import { Router } from '@angular/router';
@@ -9,7 +8,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
+  standalone: false,
 })
 export class HeaderComponent implements OnInit {
 
@@ -18,8 +18,7 @@ export class HeaderComponent implements OnInit {
 	listItems:any = [ {name: "Home", link: "#/home"}, {name: "Products", link: "#/products"}, {name: "About", link: "#/about"},
 	{name: "Login", link: "#/register-user"}, {name: "Cart", link: "#/cart"} ];
 
-  constructor(public MediaObserver:MediaObserver
-	, private myService: MyserviceService
+  constructor(private myService: MyserviceService
 	,private userService:UserService
     , private _router: Router) {
 

@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MediaObserver, MediaChange } from "@angular/flex-layout";
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'
 import { Subscription } from 'rxjs';
 
@@ -8,14 +7,14 @@ import { Subscription } from 'rxjs';
   selector: 'app-slider',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.css'],
-  providers: [NgbCarouselConfig]
+  providers: [NgbCarouselConfig],
+  standalone: false,
 })
 export class SliderComponent implements OnInit, OnDestroy {
 
   deviceXs:boolean;
-  mediaSub:Subscription;
 
-  constructor(config: NgbCarouselConfig, private router: Router, public MediaObserver:MediaObserver) {
+  constructor(config: NgbCarouselConfig, private router: Router) {
     config.interval = 3500;
     config.wrap = true;
     config.keyboard = true;
@@ -23,17 +22,10 @@ export class SliderComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit(): void {
-    this.mediaSub = this.MediaObserver.media$.subscribe(
-      (result:MediaChange)=>{
-        console.log(result.mqAlias);
-        this.deviceXs = result.mqAlias === 'xs' ? true:false;
-      }
-    )
     console.log(this.deviceXs);
   }
 
   ngOnDestroy() {
-    this.mediaSub.unsubscribe();
   }
 
   viewProducts() {

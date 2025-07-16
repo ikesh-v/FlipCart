@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DEFAULT_INTERPOLATION_CONFIG } from '@angular/compiler/src/ml_parser/interpolation_config';
 import { MyserviceService } from '../../services/myservice.service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
+  standalone: false,
 })
 export class CartComponent implements OnInit {
   cartProducts: any =[];

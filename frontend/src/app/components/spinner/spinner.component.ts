@@ -5,7 +5,8 @@ import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 @Component({
   selector: 'app-spinner',
   templateUrl: './spinner.component.html',
-  styleUrls: ['./spinner.component.css']
+  styleUrls: ['./spinner.component.css'],
+  standalone: false,
 })
 export class SpinnerComponent implements OnInit {
 

@@ -17,7 +17,7 @@
             "index": "frontend/src/index.html",
             "main": "frontend/src/main.ts",
             "polyfills": "frontend/src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "tsConfig": "frontend/tsconfig.app.json",
             "aot": true,
             "assets": [
               "frontend/src/favicon.ico",
@@ -41,7 +41,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -64,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "flipcart-frontend:build"
+            "buildTarget": "flipcart-frontend:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "flipcart-frontend:build:production"
+              "buildTarget": "flipcart-frontend:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "flipcart-frontend:build"
+            "buildTarget": "flipcart-frontend:build"
           }
         },
         "test": {
@@ -83,7 +82,7 @@
           "options": {
             "main": "frontend/src/test.ts",
             "polyfills": "frontend/src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
+            "tsConfig": "frontend/tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
               "frontend/src/favicon.ico",
@@ -100,9 +99,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "frontend/tsconfig.app.json",
+              "frontend/tsconfig.spec.json",
+              "frontend/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -124,5 +123,7 @@
       }
     }
   },
-  "defaultProject": "flipcart-frontend"
+  "cli": {
+    "analytics": false
+  }
 }

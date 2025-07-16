@@ -1,6 +1,5 @@
 import { MyserviceService } from './services/myservice.service';
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { MediaObserver, MediaChange } from "@angular/flex-layout";
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { async } from 'rxjs/internal/scheduler/async';
@@ -8,7 +7,8 @@ import { async } from 'rxjs/internal/scheduler/async';
 @Component({
 	selector: "app-root",
 	templateUrl: "./app.component.html",
-	styleUrls: ["./app.component.css"]
+	styleUrls: ["./app.component.css"],
+  standalone: false,
 })
 export class AppComponent implements OnInit, OnDestroy {
 
@@ -47,8 +47,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  constructor(public MediaObserver:MediaObserver
-    , private myService: MyserviceService
+  constructor(private myService: MyserviceService
     , private _router: Router
     ) {
 
@@ -79,16 +78,9 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.mediaSub = this.MediaObserver.media$.subscribe(
-      (result:MediaChange)=>{
-        console.log(result.mqAlias);
-        this.deviceXs = result.mqAlias === 'xs' ? true:false;
-      }
-    )
   }
 
   ngOnDestroy() {
-    this.mediaSub.unsubscribe();
   }
 
 	add(title, url) {

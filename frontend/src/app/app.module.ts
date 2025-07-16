@@ -2,7 +2,7 @@ import { DataPassingService } from './services/dataPassing/data-passing.service'
 import { LoadingService } from './services/Loading/loading.service';
 import { MyserviceService } from './services/myservice.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -12,7 +12,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { HttpClientModule } from '@angular/common/http';
@@ -46,6 +45,18 @@ import { FooterComponent } from './components/footer/footer.component';
     SpinnerComponent,
     FooterComponent,
   ],
+  exports:[
+    AppComponent,
+    RegisterUserComponent,
+    AboutComponent,
+    HomeComponent,
+    ProductsComponent,
+    CartComponent,
+    HeaderComponent,
+    SliderComponent,
+    SpinnerComponent,
+    FooterComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -59,16 +70,19 @@ import { FooterComponent } from './components/footer/footer.component';
     MatCheckboxModule,
     MatIconModule,
     routes,
-    FlexLayoutModule,
     MatToolbarModule,
     NgbModule,
     MatProgressSpinnerModule,
     HttpClientModule,
     AngularSvgIconModule.forRoot()
   ],
-  providers: [ MyserviceService,LoadingService, DataPassingService,
+  providers: [ 
+    MyserviceService,
+    LoadingService,
+    DataPassingService,
     {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
